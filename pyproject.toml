@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "python_open_router"
+name = "zinvolt"
 version = "0.1.0"
-description = "Asynchronous Python client for Open Router."
+description = "Asynchronous Python client for Zinvolt."
 authors = ["Joost Lekkerkerker <joostlek@outlook.com>"]
 maintainers = ["Joost Lekkerkerker <joostlek@outlook.com>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/joostlek/python-open-router"
-repository = "https://github.com/joostlek/python-open-router"
-documentation = "https://github.com/joostlek/python-open-router"
+homepage = "https://github.com/joostlek/python-zinvolt"
+repository = "https://github.com/joostlek/python-zinvolt"
+documentation = "https://github.com/joostlek/python-zinvolt"
 keywords = ["OpenRouter", "api", "async", "client"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
@@ -21,11 +21,11 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 packages = [
-    { include = "python_open_router", from = "src" },
+    { include = "zinvolt", from = "src" },
 ]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 aiohttp = ">=3.0.0"
 yarl = ">=1.6.0"
 mashumaro = "^3.11"
@@ -49,8 +49,8 @@ syrupy = "5.0.0"
 aioresponses = "0.7.8"
 
 [tool.poetry.urls]
-"Bug Tracker" = "https://github.com/joostlek/python-open-router/issues"
-Changelog = "https://github.com/joostlek/python-open-router/releases"
+"Bug Tracker" = "https://github.com/joostlek/python-zinvolt/issues"
+Changelog = "https://github.com/joostlek/python-zinvolt/releases"
 
 [tool.coverage.report]
 show_missing = true
@@ -58,7 +58,7 @@ fail_under = 50
 
 [tool.coverage.run]
 plugins = ["covdefaults"]
-source = ["python_open_router"]
+source = ["zinvolt"]
 
 [tool.mypy]
 # Specify the target platform details in config, so your developers are
@@ -150,7 +150,7 @@ fixture-parentheses = false
 mark-parentheses = false
 
 [tool.ruff.lint.isort]
-known-first-party = ["python_open_router"]
+known-first-party = ["zinvolt"]
 force-sort-within-sections = true
 split-on-trailing-comma = false
 combine-as-imports = true

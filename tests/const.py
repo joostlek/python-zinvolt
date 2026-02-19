@@ -1,12 +1,7 @@
 """Constants for tests."""
 
-from importlib import metadata
+VERSION = "1"
 
-version =  "1"
-
-HEADERS = {
-    "User-Agent": f"python-zinvolt/{version}",
-    "Authorization": "Bearer token"
-}
+HEADERS = {"User-Agent": f"python-zinvolt/{VERSION}", "Authorization": "Bearer token"}
 
 URL = "https://eva-backoffice.onmoonly.app/api/public/v2/"

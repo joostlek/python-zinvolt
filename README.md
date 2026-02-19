@@ -1,4 +1,4 @@
-# Python: Open Router
+# Python: Zinvolt
 
 [![GitHub Release][releases-shield]][releases]
 [![Python Versions][python-versions-shield]][pypi]
@@ -9,16 +9,16 @@
 [![Build Status][build-shield]][build]
 [![Code Coverage][codecov-shield]][codecov]
 
-Asynchronous Python client for Open Router.
+Asynchronous Python client for Zinvolt.
 
 ## About
 
-This package allows you to fetch data from Open Router.
+This package allows you to fetch data from Zinvolt.
 
 ## Installation
 
 ```bash
-pip install python-open-router
+pip install zinvolt
 ```
 
 
@@ -108,23 +108,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[build-shield]: https://github.com/joostlek/python-open-router/actions/workflows/tests.yaml/badge.svg
-[build]: https://github.com/joostlek/python-open-router/actions
-[codecov-shield]: https://codecov.io/gh/joostlek/python-open-router/branch/master/graph/badge.svg
-[codecov]: https://codecov.io/gh/joostlek/python-open-router
-[commits-shield]: https://img.shields.io/github/commit-activity/y/joostlek/python-open-router.svg
-[commits]: https://github.com/joostlek/python-open-router/commits/master
-[contributors]: https://github.com/joostlek/python-open-router/graphs/contributors
+[build-shield]: https://github.com/joostlek/python-zinvolt/actions/workflows/tests.yaml/badge.svg
+[build]: https://github.com/joostlek/python-zinvolt/actions
+[codecov-shield]: https://codecov.io/gh/joostlek/python-zinvolt/branch/master/graph/badge.svg
+[codecov]: https://codecov.io/gh/joostlek/python-zinvolt
+[commits-shield]: https://img.shields.io/github/commit-activity/y/joostlek/python-zinvolt.svg
+[commits]: https://github.com/joostlek/python-zinvolt/commits/master
+[contributors]: https://github.com/joostlek/python-zinvolt/graphs/contributors
 [joostlek]: https://github.com/joostlek
 [keepchangelog]: http://keepachangelog.com/en/1.0.0/
-[license-shield]: https://img.shields.io/github/license/joostlek/python-open-router.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
+[license-shield]: https://img.shields.io/github/license/joostlek/python-zinvolt.svg
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
 [poetry-install]: https://python-poetry.org/docs/#installation
 [poetry]: https://python-poetry.org
 [pre-commit]: https://pre-commit.com/
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-green.svg
-[python-versions-shield]: https://img.shields.io/pypi/pyversions/python-open-router
-[releases-shield]: https://img.shields.io/github/release/joostlek/python-open-router.svg
-[releases]: https://github.com/joostlek/python-open-router/releases
+[python-versions-shield]: https://img.shields.io/pypi/pyversions/zinvolt
+[releases-shield]: https://img.shields.io/github/release/joostlek/python-zinvolt.svg
+[releases]: https://github.com/joostlek/python-zinvolt/releases
 [semver]: http://semver.org/spec/v2.0.0.html
-[pypi]: https://pypi.org/project/python-open-router/
+[pypi]: https://pypi.org/project/zinvolt/

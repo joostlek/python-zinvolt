@@ -2,6 +2,4 @@
 
 from .zinvolt import ZinvoltClient
 
-__all__ = [
-    "ZinvoltClient"
-]
+__all__ = ["ZinvoltClient"]

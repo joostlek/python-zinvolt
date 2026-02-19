@@ -1,14 +1,13 @@
 """Asynchronous Python client for Zinvolt."""
 
 from collections.abc import AsyncGenerator, Generator
-from unittest.mock import patch
 
 import aiohttp
 from aioresponses import aioresponses
 import pytest
 
-from zinvolt import ZinvoltClient
 from syrupy import SnapshotAssertion
+from zinvolt import ZinvoltClient
 
 from .syrupy import ZinvoltSnapshotExtension
 
@@ -34,4 +33,3 @@ def aioresponses_fixture() -> Generator[aioresponses, None, None]:
     """Return aioresponses fixture."""
     with aioresponses() as mocked_responses:
         yield mocked_responses
-

@@ -4,29 +4,24 @@ from __future__ import annotations
 
 import asyncio
 from dataclasses import dataclass
-from importlib import metadata
 import logging
-from typing import TYPE_CHECKING, Any, Callable, Concatenate, Self
-import xml.etree.ElementTree as ET
+from typing import Any, Self
 
-from mashumaro.codecs.orjson import ORJSONDecoder
-import orjson
 from aiohttp import ClientSession
 from aiohttp.hdrs import METH_GET, METH_POST
+from mashumaro.codecs.orjson import ORJSONDecoder
+import orjson
 from yarl import URL
 
 from zinvolt.models import (
     Battery,
     BatteryListResponse,
     BatteryState,
-    OnlineStatusResponse,
-    OnlineStatus,
-    PhotovoltaicData,
     GlobalSettings,
+    OnlineStatus,
+    OnlineStatusResponse,
+    PhotovoltaicData,
 )
-
-if TYPE_CHECKING:
-    from collections.abc import Awaitable
 
 VERSION = "1"
 
@@ -83,7 +78,9 @@ class ZinvoltClient:
 
     async def login(self, email: str, password: str) -> str:
         """Login to the Zinvolt API."""
-        result = await self._request("login", method=METH_POST, data={"email": email, "password": password})
+        result = await self._request(
+            "login", method=METH_POST, data={"email": email, "password": password}
+        )
         self.token = orjson.loads(result)["token"]  # pylint: disable=no-member
         return self.token
 
@@ -100,7 +97,9 @@ class ZinvoltClient:
     async def is_battery_online(self, battery_id: str) -> bool:
         """Retrieve the battery status for the given battery ID."""
         result = await self._get(f"system/{battery_id}/basic/online-status")
-        return OnlineStatusResponse.from_json(result).online_status is OnlineStatus.ONLINE
+        return (
+            OnlineStatusResponse.from_json(result).online_status is OnlineStatus.ONLINE
+        )
 
     async def get_photovoltaic_data(self, battery_id: str) -> list[PhotovoltaicData]:
         """Retrieve the photovoltaic data for the given battery ID."""

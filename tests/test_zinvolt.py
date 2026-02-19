@@ -4,17 +4,17 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from aiohttp.hdrs import METH_POST, METH_GET
+from aiohttp.hdrs import METH_GET, METH_POST
 from aioresponses import aioresponses
 import pytest
-
-from zinvolt.zinvolt import ZinvoltClient
 
 from . import load_fixture
 from .const import HEADERS, URL
 
 if TYPE_CHECKING:
     from syrupy import SnapshotAssertion
+    from zinvolt.zinvolt import ZinvoltClient
+
 
 async def test_login(
     responses: aioresponses,
@@ -33,43 +33,40 @@ async def test_login(
         METH_POST,
         headers=HEADERS,
         json={
-            "email": "test@test.com", "password": "abc",
+            "email": "test@test.com",
+            "password": "abc",
         },
     )
+
 
 @pytest.mark.parametrize(
     ("method", "kwargs", "endpoint", "fixture"),
     [
-        (
-            "get_batteries",
-            {},
-            "system/batteries",
-            "batteries"
-        ),
+        ("get_batteries", {}, "system/batteries", "batteries"),
         (
             "get_battery_status",
             {"battery_id": "123123"},
             "system/123123/basic/current-state",
-            "current_state"
+            "current_state",
         ),
         (
             "is_battery_online",
             {"battery_id": "123123"},
             "system/123123/basic/online-status",
-            "online_status"
+            "online_status",
         ),
         (
             "get_photovoltaic_data",
             {"battery_id": "123123"},
             "system/123123/basic/pv-data",
-            "pv_data"
+            "pv_data",
         ),
         (
             "get_global_settings",
             {"battery_id": "123123"},
             "system/123123/configuration/global-settings",
-            "global_settings"
-        )
+            "global_settings",
+        ),
     ],
     ids=[
         "get_batteries",
@@ -77,7 +74,7 @@ async def test_login(
         "is_battery_online",
         "get_photovoltaic_data",
         "get_global_settings",
-    ]
+    ],
 )
 async def test_retrieve_data(
     responses: aioresponses,

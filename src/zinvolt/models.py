@@ -3,15 +3,17 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from enum import IntEnum, StrEnum
+from enum import StrEnum
+
 from mashumaro import field_options
 from mashumaro.mixins.orjson import DataClassORJSONMixin
+
 
 @dataclass
 class Battery(DataClassORJSONMixin):
     """Battery model."""
 
-    identifier: str =field(metadata=field_options(alias="id"))
+    identifier: str = field(metadata=field_options(alias="id"))
     name: str
     serial_number: str
 
@@ -22,16 +24,19 @@ class BatteryListResponse(DataClassORJSONMixin):
 
     batteries: list[Battery]
 
+
 class OnlineStatus(StrEnum):
     """Online status."""
 
     ONLINE = "ONLINE"
     OFFLINE = "OFFLINE"
 
+
 class SmartMode(StrEnum):
     """Smart mode."""
 
     DYNAMIC = "DYNAMIC"
+
 
 @dataclass
 class CurrentPower(DataClassORJSONMixin):
@@ -63,7 +68,6 @@ class OnlineStatusResponse(DataClassORJSONMixin):
     online_status: OnlineStatus = field(metadata=field_options(alias="onlineStatus"))
 
 
-
 @dataclass
 class PhotovoltaicData(DataClassORJSONMixin):
     """Photovoltaic data."""
@@ -71,11 +75,12 @@ class PhotovoltaicData(DataClassORJSONMixin):
     name: str
     power: int
 
+
 @dataclass
 class GlobalSettings(DataClassORJSONMixin):
     """Global settings."""
 
-    max_output : int = field(metadata=field_options(alias="maxOutput"))
+    max_output: int = field(metadata=field_options(alias="maxOutput"))
     max_output_limit: int = field(metadata=field_options(alias="maxOutputLimit"))
     max_output_unlocked: bool = field(metadata=field_options(alias="maxOutputUnlocked"))
     battery_high_capacity: int = field(metadata=field_options(alias="batHighCap"))

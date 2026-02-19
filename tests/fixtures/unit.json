@@ -1,0 +1,39 @@
+{
+    "units": [
+        {
+            "usn": "ALG001124100107",
+            "name": "Inverter",
+            "type": "INVERTER",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V1.029",
+                "latestVersion": "V1.030",
+                "status": "DISCOVER_UPDATED"
+            }
+        },
+        {
+            "usn": "ems",
+            "name": "EMS",
+            "type": "EMS",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V1.01.40",
+                "latestVersion": "V1.01.46",
+                "status": "DISCOVER_UPDATED"
+            }
+        },
+        {
+            "usn": "AID24011000107136",
+            "name": "Battery",
+            "type": "BATTERY",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V2.19",
+                "status": "NO_UPDATE"
+            }
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "usn": "ems",
+    "name": "EMS",
+    "type": "EMS",
+    "abnormalAmount": 0,
+    "resettable": false,
+    "version": {
+        "currentVersion": "V1.01.40",
+        "latestVersion": "V1.01.46",
+        "status": "DISCOVER_UPDATED"
+    },
+    "points": []
+}

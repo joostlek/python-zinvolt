@@ -1,0 +1,16 @@
+{
+    "maxOutput": 800,
+    "maxOutputLimit": 800,
+    "maxOutputUnlocked": false,
+    "batHighCap": 100,
+    "batUseCap": 25,
+    "maxChargePower": 900,
+    "feedModePower": {
+        "modeType": "FIXED",
+        "fixedPower": 200,
+        "pvFeedLimitPower": 800,
+        "equips": []
+    },
+    "haveElectricityPrices": true,
+    "standbyTime": 60
+}

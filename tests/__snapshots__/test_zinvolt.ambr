@@ -1,0 +1,53 @@
+# serializer version: 1
+# name: test_login
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXZhLWJhY2tvZmZpY2Uub25tb29ubHkuYXBwL2FwaS9wdWJsaWMvdjIvbG9naW4iLCJpYXQiOjE3NjA3OTM0NjEsIm5iZiI6MTc2MDc5MzQ2MSwianRpIjoiYjY5U0J4bVVscU5WcmlKQyIsInN1YiI6ImEwMjI2YjhmLTk4ZmUtNDUyNC1iMzY5LTI3MmI0NjZiODc5NyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJkZXZpY2VzIjpbeyJzZXJpYWxfbnVtYmVyIjoiQUxHMDAxMTI0MTAwMTA3Iiwic3VwcGxpZXIiOiJhbHBoYWVzcyIsImRldmljZWFibGVfdHlwZSI6IkFwcFxcTW9kZWxzXFxCYWxjb255QmF0dGVyeSJ9XSwibmFtZSI6IkludGVncmF0aW9uIE5hbWUiLCJhYmlsaXRpZXMiOlsiYXBpOnB1YmxpYyJdfQ.UumLlVUkGBHnO0ZVtpfENy-edf_d5LV4gOctNan2M5w'
+# ---
+# name: test_retrieve_data[get_batteries]
+  list([
+    dict({
+      'identifier': 'identifier',
+      'name': 'name',
+      'serial_number': 'serial number',
+    }),
+  ])
+# ---
+# name: test_retrieve_data[get_battery_status]
+  dict({
+    'current_power': dict({
+      'on_grid': True,
+      'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
+      'state_of_charge': 4.0,
+    }),
+    'latitude': 52.3792,
+    'longitude': 4.8936,
+    'name': 'ALG001124100107',
+    'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
+    'serial_number': 'ALG001124100107',
+    'smart_mode': <SmartMode.DYNAMIC: 'DYNAMIC'>,
+  })
+# ---
+# name: test_retrieve_data[get_global_settings]
+  dict({
+    'battery_high_capacity': 100,
+    'battery_use_capacity': 25,
+    'max_output': 800,
+    'max_output_limit': 800,
+    'max_output_unlocked': False,
+    'maximum_charge_power': 900,
+  })
+# ---
+# name: test_retrieve_data[get_photovoltaic_data]
+  list([
+    dict({
+      'name': 'PV1',
+      'power': 0,
+    }),
+    dict({
+      'name': 'PV2',
+      'power': 0,
+    }),
+  ])
+# ---
+# name: test_retrieve_data[is_battery_online]
+  True
+# ---

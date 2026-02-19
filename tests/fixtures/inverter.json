@@ -1,0 +1,42 @@
+{
+    "usn": "ALG001124100107",
+    "name": "Inverter",
+    "type": "INVERTER",
+    "abnormalAmount": 0,
+    "resettable": false,
+    "version": {
+        "currentVersion": "V1.029",
+        "latestVersion": "V1.030",
+        "status": "DISCOVER_UPDATED"
+    },
+    "points": [
+        {
+            "point": "VOLTAGE",
+            "unitType": "INVERTER",
+            "message": "Voltage",
+            "pieces": [],
+            "normal": true
+        },
+        {
+            "point": "CURRENT",
+            "unitType": "INVERTER",
+            "message": "Current",
+            "pieces": [],
+            "normal": true
+        },
+        {
+            "point": "TEMPERATURE",
+            "unitType": "INVERTER",
+            "message": "Temperature",
+            "pieces": [],
+            "normal": true
+        },
+        {
+            "point": "OTHER",
+            "unitType": "INVERTER",
+            "message": "Other",
+            "pieces": [],
+            "normal": true
+        }
+    ]
+}

@@ -1,9 +1,9 @@
 {
-  "batteries": [
-    {
-      "id": "identifier",
-      "name": "name",
-      "serial_number": "serial number"
-    }
-  ]
+    "batteries": [
+        {
+            "id": "a125ef17-6bdf-45ad-b106-ce54e95e4634",
+            "name": "Zinvolt Batterij",
+            "serial_number": "ZVG011025120088"
+        }
+    ]
 }

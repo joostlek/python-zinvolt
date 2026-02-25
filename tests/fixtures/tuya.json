@@ -1,0 +1,10 @@
+{
+    "id": 200000000009039,
+    "deviceId": "AECCAA0136",
+    "ownerGuid": "EdxM2EsVNJVc6aSTUZ9jSqMN5jrAUocw",
+    "type": "S_METER_RS06",
+    "onlineStatus": "ONLINE",
+    "name": "SRS6 2",
+    "power": -1220,
+    "units": []
+}

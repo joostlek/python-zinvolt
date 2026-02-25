@@ -36,6 +36,7 @@ class SmartMode(StrEnum):
     """Smart mode."""
 
     DYNAMIC = "DYNAMIC"
+    CHARGED = "CHARGED"
 
 
 @dataclass
@@ -53,8 +54,6 @@ class BatteryState(DataClassORJSONMixin):
 
     serial_number: str = field(metadata=field_options(alias="sn"))
     name: str
-    longitude: float
-    latitude: float
     online_status: OnlineStatus = field(metadata=field_options(alias="onlineStatus"))
     current_power: CurrentPower = field(metadata=field_options(alias="currentPower"))
     smart_mode: SmartMode = field(metadata=field_options(alias="smartMode"))

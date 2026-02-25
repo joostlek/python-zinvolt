@@ -1,9 +1,37 @@
 {
     "data": {
-        "id": 110000000010200,
-        "sn": "ALG001124100107",
-        "createTime": "2025-09-18T13:22:05.000+00:00",
-        "updateTime": "2025-09-18T13:22:05.000+00:00",
-        "electricityType": "DYNAMIC"
+        "enableDynamicPrice": "ENABLE",
+        "appHomeDisplay": false,
+        "isAllowNDPBatteryReserve": false,
+        "neBatCapReserve": false,
+        "sourceChannel": "PUBLISHED_PRICE",
+        "electricitySubSource": "EPEX_NL",
+        "electricitySubSourceName": "Day-ahead spot - NL",
+        "highPrice": 0.09304,
+        "lowPrice": 0.07756,
+        "currency": "EUR",
+        "currencySymbol": "€",
+        "strategyId": "EdxM2EsVNJVc6abhzFxpyryMrXH77Jwa",
+        "highPriceStrategyConfig": {
+            "strategyId": "EdxM2EsVNJVc6abhzFxpyryMrXH77Jwa",
+            "priceType": "HIGH",
+            "priceRange": 70
+        },
+        "normalPriceStrategyConfig": {
+            "strategyId": "EdxM2EsVNJVc6abhzFxpyryMrXH77Jwa",
+            "priceType": "NORMAL"
+        },
+        "lowPriceStrategyConfig": {
+            "strategyId": "EdxM2EsVNJVc6abhzFxpyryMrXH77Jwa",
+            "priceType": "LOW",
+            "priceRange": 30
+        },
+        "highPriceRange": 70,
+        "lowPriceRange": 30,
+        "strategyStatus": "PAUSE",
+        "controlMode": 1,
+        "aiPermEnabled": 0,
+        "epexSpotCoefficient": 1,
+        "additionalItems": 0
     }
 }

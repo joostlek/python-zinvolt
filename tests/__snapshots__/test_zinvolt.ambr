@@ -5,9 +5,9 @@
 # name: test_retrieve_data[get_batteries]
   list([
     dict({
-      'identifier': 'a0226fa5-bfdf-4192-9dd5-81d0ad085f29',
+      'identifier': 'a125ef17-6bdf-45ad-b106-ce54e95e4634',
       'name': 'Zinvolt Batterij',
-      'serial_number': 'ALG001124100107',
+      'serial_number': 'ZVG011025120088',
     }),
   ])
 # ---
@@ -16,24 +16,22 @@
     'current_power': dict({
       'on_grid': True,
       'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
-      'state_of_charge': 4.0,
+      'state_of_charge': 100.0,
     }),
-    'latitude': 52.3792,
-    'longitude': 4.8936,
-    'name': 'ALG001124100107',
+    'name': 'ZVG011025120088',
     'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
-    'serial_number': 'ALG001124100107',
-    'smart_mode': <SmartMode.DYNAMIC: 'DYNAMIC'>,
+    'serial_number': 'ZVG011025120088',
+    'smart_mode': <SmartMode.CHARGED: 'CHARGED'>,
   })
 # ---
 # name: test_retrieve_data[get_global_settings]
   dict({
     'battery_high_capacity': 100,
-    'battery_use_capacity': 25,
+    'battery_use_capacity': 10,
     'max_output': 800,
     'max_output_limit': 800,
     'max_output_unlocked': False,
-    'maximum_charge_power': 900,
+    'maximum_charge_power': 800,
   })
 # ---
 # name: test_retrieve_data[get_photovoltaic_data]

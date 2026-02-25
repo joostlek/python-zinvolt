@@ -1,13 +1,12 @@
 {
-    "usn": "ALG001124100107",
+    "usn": "<���",
     "name": "Inverter",
     "type": "INVERTER",
     "abnormalAmount": 0,
     "resettable": false,
     "version": {
-        "currentVersion": "V1.029",
-        "latestVersion": "V1.030",
-        "status": "DISCOVER_UPDATED"
+        "currentVersion": "V1.04.016",
+        "status": "NO_UPDATE"
     },
     "points": [
         {

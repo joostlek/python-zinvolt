@@ -67,6 +67,12 @@ async def test_login(
             "system/123123/configuration/global-settings",
             "global_settings",
         ),
+        (
+            "get_custom_modes",
+            {"battery_id": "123123"},
+            "system/123123/custom-mode",
+            "custom_modes",
+        ),
     ],
     ids=[
         "get_batteries",
@@ -74,6 +80,7 @@ async def test_login(
         "is_battery_online",
         "get_photovoltaic_data",
         "get_global_settings",
+        "get_custom_modes",
     ],
 )
 async def test_retrieve_data(

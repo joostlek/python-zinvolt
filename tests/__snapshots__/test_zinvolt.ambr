@@ -38,6 +38,22 @@
     'smart_mode': <SmartMode.CHARGED: 'CHARGED'>,
   })
 # ---
+# name: test_retrieve_data[get_custom_modes]
+  list([
+    dict({
+      'enable': False,
+      'mode_id': 'EdxM2EsVNJVc6abhbVnbeby5bcq5EBXh',
+      'name': 'Aangepaste modus',
+      'serial_number': 'ZVG011025120088',
+      'weeks': list([
+        1,
+        2,
+        3,
+        4,
+      ]),
+    }),
+  ])
+# ---
 # name: test_retrieve_data[get_global_settings]
   dict({
     'battery_lower_threshold': 10,

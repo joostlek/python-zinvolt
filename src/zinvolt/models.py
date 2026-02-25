@@ -25,6 +25,17 @@ class BatteryListResponse(DataClassORJSONMixin):
     batteries: list[Battery]
 
 
+@dataclass
+class CustomMode(DataClassORJSONMixin):
+    """Custom mode."""
+
+    mode_id: str = field(metadata=field_options(alias="confId"))
+    serial_number: str = field(metadata=field_options(alias="sn"))
+    name: str
+    weeks: list[int]
+    enable: bool
+
+
 class OnlineStatus(StrEnum):
     """Online status."""
 
@@ -38,6 +49,10 @@ class SmartMode(StrEnum):
     DYNAMIC = "DYNAMIC"
     CHARGED = "CHARGED"
     PERFORMANCE = "PERFORMANCE"
+    DEFAULT = "DEFAULT"
+    FEED = "FEED"
+    CUSTOM = "CUSTOM"
+    SELF_USE = "SELF_USE"
 
 
 @dataclass

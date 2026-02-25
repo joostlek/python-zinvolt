@@ -8,7 +8,7 @@ import logging
 from typing import Any, Self
 
 from aiohttp import ClientSession
-from aiohttp.hdrs import METH_GET, METH_POST
+from aiohttp.hdrs import METH_GET, METH_POST, METH_PUT
 from mashumaro.codecs.orjson import ORJSONDecoder
 import orjson
 from yarl import URL
@@ -22,6 +22,7 @@ from zinvolt.models import (
     OnlineStatus,
     OnlineStatusResponse,
     PhotovoltaicData,
+    SmartMode,
 )
 
 VERSION = "1"
@@ -77,11 +78,17 @@ class ZinvoltClient:
         """Handle a GET request to the Zinvolt API."""
         return await self._request(uri, method=METH_GET)
 
+    async def _put(self, uri: str, data: dict[str, Any]) -> str:
+        """Handle a PUT request to the Zinvolt API."""
+        return await self._request(uri, method=METH_PUT, data=data)
+
+    async def _post(self, uri: str, data: dict[str, Any]) -> str:
+        """Handle a POST request to the Zinvolt API."""
+        return await self._request(uri, method=METH_POST, data=data)
+
     async def login(self, email: str, password: str) -> str:
         """Login to the Zinvolt API."""
-        result = await self._request(
-            "login", method=METH_POST, data={"email": email, "password": password}
-        )
+        result = await self._post("login", {"email": email, "password": password})
         self.token = orjson.loads(result)["token"]  # pylint: disable=no-member
         return self.token
 
@@ -116,6 +123,18 @@ class ZinvoltClient:
         """Retrieve the custom modes for the given battery ID."""
         result = await self._get(f"system/{battery_id}/custom-mode")
         return ORJSONDecoder(list[CustomMode]).decode(result)
+
+    async def set_smart_mode(
+        self, battery_id: str, smart_mode: SmartMode | str
+    ) -> None:
+        """Retrieve the custom modes for the given battery ID."""
+        data: dict[str, Any] = {}
+        if not isinstance(smart_mode, SmartMode):
+            data["custom_mode_id"] = smart_mode
+            data["mode"] = SmartMode.CUSTOM
+        else:
+            data["mode"] = smart_mode
+        await self._put(f"system/{battery_id}/operation/switch-smart-mode", data=data)
 
     async def close(self) -> None:
         """Close open client session."""

@@ -17,6 +17,7 @@ from zinvolt.models import (
     Battery,
     BatteryListResponse,
     BatteryState,
+    CustomMode,
     GlobalSettings,
     OnlineStatus,
     OnlineStatusResponse,
@@ -27,7 +28,7 @@ VERSION = "1"
 
 _LOGGER = logging.getLogger(__package__)
 
-HOST = "eva-backoffice.onmoonly.app"
+HOST = "app.zinvolt.com"
 
 
 @dataclass
@@ -110,6 +111,11 @@ class ZinvoltClient:
         """Retrieve the global settings for the given battery ID."""
         result = await self._get(f"system/{battery_id}/configuration/global-settings")
         return GlobalSettings.from_json(result)
+
+    async def get_custom_modes(self, battery_id: str) -> list[CustomMode]:
+        """Retrieve the custom modes for the given battery ID."""
+        result = await self._get(f"system/{battery_id}/custom-mode")
+        return ORJSONDecoder(list[CustomMode]).decode(result)
 
     async def close(self) -> None:
         """Close open client session."""

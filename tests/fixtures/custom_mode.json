@@ -1,0 +1,20 @@
+{
+    "confId": "EdxM2EsVNJVc6abhbVnbeby5bcq5EBXh",
+    "sn": "ZVG011025120088",
+    "name": "Aangepaste modus",
+    "weeks": [
+        1,
+        2,
+        3,
+        4
+    ],
+    "enable": false,
+    "chargeTimeStrategies": [
+        {
+            "changerPower": 0,
+            "beginTime": "01:00",
+            "endTime": "02:00"
+        }
+    ],
+    "dischargeTimeStrategies": []
+}

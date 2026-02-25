@@ -151,3 +151,55 @@ async def test_retrieve_data(
         headers=HEADERS,
         json=None,
     )
+
+
+@pytest.mark.parametrize(
+    ("method", "kwargs", "data"),
+    [
+        (
+            "set_max_output",
+            {"max_output": 500},
+            {"max_output": 500},
+        ),
+        (
+            "set_lower_threshold",
+            {"lower_threshold": 500},
+            {"bat_use_cap": 500},
+        ),
+        (
+            "set_upper_threshold",
+            {"upper_threshold": 500},
+            {"max_charge_power": 500},
+        ),
+        (
+            "set_standby_time",
+            {"standby_time": 500},
+            {"standby_time": 500},
+        ),
+    ],
+    ids=[
+        "set_max_output",
+        "set_lower_threshold",
+        "set_upper_threshold",
+        "set_standby_time",
+    ],
+)
+async def test_setting_global_settings(
+    responses: aioresponses,
+    client: ZinvoltClient,
+    method: str,
+    kwargs: dict[str, Any],
+    data: dict[str, Any],
+) -> None:
+    """Test setting global settings."""
+    responses.post(
+        f"{URL}system/123123/configuration/global-settings",
+        status=200,
+    )
+    await getattr(client, method)(**(kwargs | {"battery_id": "123123"}))
+    responses.assert_called_once_with(
+        f"{URL}system/123123/configuration/global-settings",
+        METH_POST,
+        headers=HEADERS,
+        json=data,
+    )

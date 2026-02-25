@@ -110,3 +110,33 @@ class GlobalSettings(DataClassORJSONMixin):
     battery_lower_threshold: int = field(metadata=field_options(alias="batUseCap"))
     maximum_charge_power: int = field(metadata=field_options(alias="maxChargePower"))
     standby_time: int = field(metadata=field_options(alias="standbyTime"))
+
+
+@dataclass
+class BatteryUnit(DataClassORJSONMixin):
+    """Battery unit."""
+
+    serial_number: str = field(metadata=field_options(alias="usn"))
+    version: Version
+    points: list[Checkpoint]
+    battery_model: str = field(metadata=field_options(alias="batteryModel"))
+    power: int
+    temperature: int
+
+
+@dataclass
+class Version(DataClassORJSONMixin):
+    """Version information."""
+
+    current_version: str = field(metadata=field_options(alias="currentVersion"))
+    latest_version: str | None = field(
+        metadata=field_options(alias="latestVersion"), default=None
+    )
+
+
+@dataclass
+class Checkpoint(DataClassORJSONMixin):
+    """Checkpoint information."""
+
+    point: str
+    normal: bool

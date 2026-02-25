@@ -17,6 +17,7 @@ from zinvolt.models import (
     Battery,
     BatteryListResponse,
     BatteryState,
+    BatteryUnit,
     CustomMode,
     GlobalSettings,
     OnlineStatus,
@@ -123,6 +124,15 @@ class ZinvoltClient:
         """Retrieve the custom modes for the given battery ID."""
         result = await self._get(f"system/{battery_id}/custom-mode")
         return ORJSONDecoder(list[CustomMode]).decode(result)
+
+    async def get_battery_unit(
+        self, battery_id: str, battery_serial_number: str
+    ) -> BatteryUnit:
+        """Retrieve the battery unit for the given battery ID."""
+        result = await self._get(
+            f"system/{battery_id}/unit/battery/{battery_serial_number}"
+        )
+        return BatteryUnit.from_json(result)
 
     async def set_smart_mode(
         self, battery_id: str, smart_mode: SmartMode | str

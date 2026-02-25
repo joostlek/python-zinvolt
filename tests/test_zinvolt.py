@@ -4,9 +4,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any
 
-from aiohttp.hdrs import METH_GET, METH_POST
+from aiohttp.hdrs import METH_GET, METH_POST, METH_PUT
 from aioresponses import aioresponses
 import pytest
+
+from zinvolt.models import SmartMode
 
 from . import load_fixture
 from .const import HEADERS, URL
@@ -35,6 +37,43 @@ async def test_login(
         json={
             "email": "test@test.com",
             "password": "abc",
+        },
+    )
+
+
+async def test_set_smart_mode(responses: aioresponses, client: ZinvoltClient) -> None:
+    """Test setting smart mode."""
+    responses.put(
+        f"{URL}system/123123/operation/switch-smart-mode",
+        status=200,
+    )
+    await client.set_smart_mode(battery_id="123123", smart_mode=SmartMode.DYNAMIC)
+    responses.assert_called_once_with(
+        f"{URL}system/123123/operation/switch-smart-mode",
+        METH_PUT,
+        headers=HEADERS,
+        json={"mode": "DYNAMIC"},
+    )
+
+
+async def test_set_custom_smart_mode(
+    responses: aioresponses, client: ZinvoltClient
+) -> None:
+    """Test setting smart mode."""
+    responses.put(
+        f"{URL}system/123123/operation/switch-smart-mode",
+        status=200,
+    )
+    await client.set_smart_mode(
+        battery_id="123123", smart_mode="EdxM2EsVNJVc6abhbVnbeby5bcq5EBXh"
+    )
+    responses.assert_called_once_with(
+        f"{URL}system/123123/operation/switch-smart-mode",
+        METH_PUT,
+        headers=HEADERS,
+        json={
+            "mode": "CUSTOM",
+            "custom_mode_id": "EdxM2EsVNJVc6abhbVnbeby5bcq5EBXh",
         },
     )
 

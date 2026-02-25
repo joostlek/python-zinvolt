@@ -146,6 +146,42 @@ class ZinvoltClient:
             data["mode"] = smart_mode
         await self._put(f"system/{battery_id}/operation/switch-smart-mode", data=data)
 
+    async def set_max_output(self, battery_id: str, max_output: int) -> None:
+        """Set the maximum output for the given battery ID."""
+        await self._post(
+            f"system/{battery_id}/configuration/global-settings",
+            data={
+                "max_output": max_output,
+            },
+        )
+
+    async def set_lower_threshold(self, battery_id: str, lower_threshold: int) -> None:
+        """Set the lower threshold for the given battery ID."""
+        await self._post(
+            f"system/{battery_id}/configuration/global-settings",
+            data={
+                "bat_use_cap": lower_threshold,
+            },
+        )
+
+    async def set_upper_threshold(self, battery_id: str, upper_threshold: int) -> None:
+        """Set the upper threshold for the given battery ID."""
+        await self._post(
+            f"system/{battery_id}/configuration/global-settings",
+            data={
+                "max_charge_power": upper_threshold,
+            },
+        )
+
+    async def set_standby_time(self, battery_id: str, standby_time: int) -> None:
+        """Set the standby time in minutes for the given battery ID."""
+        await self._post(
+            f"system/{battery_id}/configuration/global-settings",
+            data={
+                "standby_time": standby_time,
+            },
+        )
+
     async def close(self) -> None:
         """Close open client session."""
         if self.session and self._close_session:

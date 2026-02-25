@@ -37,6 +37,7 @@ class SmartMode(StrEnum):
 
     DYNAMIC = "DYNAMIC"
     CHARGED = "CHARGED"
+    PERFORMANCE = "PERFORMANCE"
 
 
 @dataclass
@@ -44,7 +45,12 @@ class CurrentPower(DataClassORJSONMixin):
     """Current power model."""
 
     state_of_charge: float = field(metadata=field_options(alias="soc"))
+    output_current: int = field(metadata=field_options(alias="coc"))
+    max_power: int = field(metadata=field_options(alias="smp"))
     on_grid: bool = field(metadata=field_options(alias="onGrid"))
+    photovoltaic_power: int = field(metadata=field_options(alias="ppv"))
+    power_socket_output: int = field(metadata=field_options(alias="pso"))
+    is_dormant: bool = field(metadata=field_options(alias="isDormancy"))
     online_status: OnlineStatus = field(metadata=field_options(alias="onlineStatus"))
 
 
@@ -57,6 +63,9 @@ class BatteryState(DataClassORJSONMixin):
     online_status: OnlineStatus = field(metadata=field_options(alias="onlineStatus"))
     current_power: CurrentPower = field(metadata=field_options(alias="currentPower"))
     smart_mode: SmartMode = field(metadata=field_options(alias="smartMode"))
+    global_settings: GlobalSettings = field(
+        metadata=field_options(alias="globalSettings")
+    )
 
 
 @dataclass
@@ -82,6 +91,7 @@ class GlobalSettings(DataClassORJSONMixin):
     max_output: int = field(metadata=field_options(alias="maxOutput"))
     max_output_limit: int = field(metadata=field_options(alias="maxOutputLimit"))
     max_output_unlocked: bool = field(metadata=field_options(alias="maxOutputUnlocked"))
-    battery_high_capacity: int = field(metadata=field_options(alias="batHighCap"))
-    battery_use_capacity: int = field(metadata=field_options(alias="batUseCap"))
+    battery_upper_threshold: int = field(metadata=field_options(alias="batHighCap"))
+    battery_lower_threshold: int = field(metadata=field_options(alias="batUseCap"))
     maximum_charge_power: int = field(metadata=field_options(alias="maxChargePower"))
+    standby_time: int = field(metadata=field_options(alias="standbyTime"))

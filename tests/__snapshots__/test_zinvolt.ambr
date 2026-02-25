@@ -14,9 +14,23 @@
 # name: test_retrieve_data[get_battery_status]
   dict({
     'current_power': dict({
+      'is_dormant': False,
+      'max_power': 800,
       'on_grid': True,
       'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
+      'output_current': 4,
+      'photovoltaic_power': 0,
+      'power_socket_output': -19,
       'state_of_charge': 100.0,
+    }),
+    'global_settings': dict({
+      'battery_lower_threshold': 10,
+      'battery_upper_threshold': 100,
+      'max_output': 800,
+      'max_output_limit': 800,
+      'max_output_unlocked': False,
+      'maximum_charge_power': 800,
+      'standby_time': 60,
     }),
     'name': 'ZVG011025120088',
     'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
@@ -26,12 +40,13 @@
 # ---
 # name: test_retrieve_data[get_global_settings]
   dict({
-    'battery_high_capacity': 100,
-    'battery_use_capacity': 10,
+    'battery_lower_threshold': 10,
+    'battery_upper_threshold': 100,
     'max_output': 800,
     'max_output_limit': 800,
     'max_output_unlocked': False,
     'maximum_charge_power': 800,
+    'standby_time': 60,
   })
 # ---
 # name: test_retrieve_data[get_photovoltaic_data]

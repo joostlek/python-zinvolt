@@ -119,6 +119,76 @@
     }),
   ])
 # ---
+# name: test_retrieve_data[get_units]
+  list([
+    dict({
+      'abnormal_amount': 0,
+      'name': 'Inverter',
+      'resettable': False,
+      'serial_number': 'INV001',
+      'type': <UnitType.INVERTER: 'INVERTER'>,
+      'version': dict({
+        'current_version': 'V1.032',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+    dict({
+      'abnormal_amount': 0,
+      'name': 'EMS',
+      'resettable': False,
+      'serial_number': 'ems',
+      'type': <UnitType.EMS: 'EMS'>,
+      'version': dict({
+        'current_version': 'V1.01.45E',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+    dict({
+      'abnormal_amount': 0,
+      'name': 'Battery - 1',
+      'resettable': False,
+      'serial_number': 'BAT001',
+      'type': <UnitType.BATTERY: 'BATTERY'>,
+      'version': dict({
+        'current_version': 'V1.20',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+    dict({
+      'abnormal_amount': 0,
+      'name': 'Battery - 2',
+      'resettable': False,
+      'serial_number': 'BAT002',
+      'type': <UnitType.BATTERY: 'BATTERY'>,
+      'version': dict({
+        'current_version': 'V1.20',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+    dict({
+      'abnormal_amount': 0,
+      'name': 'Battery - 3',
+      'resettable': False,
+      'serial_number': 'BAT003',
+      'type': <UnitType.BATTERY: 'BATTERY'>,
+      'version': dict({
+        'current_version': 'V1.20',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+    dict({
+      'abnormal_amount': 0,
+      'name': 'Battery - 4',
+      'resettable': False,
+      'serial_number': 'BAT004',
+      'type': <UnitType.BATTERY: 'BATTERY'>,
+      'version': dict({
+        'current_version': 'V1.20',
+        'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
+      }),
+    }),
+  ])
+# ---
 # name: test_retrieve_data[is_battery_online]
   True
 # ---

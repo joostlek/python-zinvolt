@@ -24,6 +24,8 @@ from zinvolt.models import (
     OnlineStatusResponse,
     PhotovoltaicData,
     SmartMode,
+    Unit,
+    UnitsResponse,
 )
 
 VERSION = "1"
@@ -124,6 +126,11 @@ class ZinvoltClient:
         """Retrieve the custom modes for the given battery ID."""
         result = await self._get(f"system/{battery_id}/custom-mode")
         return ORJSONDecoder(list[CustomMode]).decode(result)
+
+    async def get_units(self, battery_id: str) -> list[Unit]:
+        """Retrieve all units for the given battery ID."""
+        result = await self._get(f"system/{battery_id}/unit")
+        return UnitsResponse.from_json(result).units
 
     async def get_battery_unit(
         self, battery_id: str, battery_serial_number: str

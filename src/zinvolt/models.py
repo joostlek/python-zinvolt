@@ -112,6 +112,48 @@ class GlobalSettings(DataClassORJSONMixin):
     standby_time: int = field(metadata=field_options(alias="standbyTime"))
 
 
+class UnitType(StrEnum):
+    """Unit type."""
+
+    INVERTER = "INVERTER"
+    EMS = "EMS"
+    BATTERY = "BATTERY"
+
+
+class UnitUpdateStatus(StrEnum):
+    """Unit update status."""
+
+    NO_UPDATE = "NO_UPDATE"
+    UPDATE_AVAILABLE = "UPDATE_AVAILABLE"
+
+
+@dataclass
+class UnitVersion(DataClassORJSONMixin):
+    """Unit version information."""
+
+    current_version: str = field(metadata=field_options(alias="currentVersion"))
+    status: UnitUpdateStatus
+
+
+@dataclass
+class Unit(DataClassORJSONMixin):
+    """Unit model."""
+
+    serial_number: str = field(metadata=field_options(alias="usn"))
+    name: str
+    type: UnitType
+    abnormal_amount: int = field(metadata=field_options(alias="abnormalAmount"))
+    resettable: bool
+    version: UnitVersion
+
+
+@dataclass
+class UnitsResponse(DataClassORJSONMixin):
+    """Units list response."""
+
+    units: list[Unit]
+
+
 @dataclass
 class BatteryUnit(DataClassORJSONMixin):
     """Battery unit."""

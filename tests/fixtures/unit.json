@@ -1,13 +1,13 @@
 {
     "units": [
         {
-            "usn": "<���",
+            "usn": "INV001",
             "name": "Inverter",
             "type": "INVERTER",
             "abnormalAmount": 0,
             "resettable": false,
             "version": {
-                "currentVersion": "V1.04.016",
+                "currentVersion": "V1.032",
                 "status": "NO_UPDATE"
             }
         },
@@ -18,18 +18,51 @@
             "abnormalAmount": 0,
             "resettable": false,
             "version": {
-                "currentVersion": "V1.01.06",
+                "currentVersion": "V1.01.45E",
                 "status": "NO_UPDATE"
             }
         },
         {
-            "usn": "ZVS25011000009148",
-            "name": "Battery",
+            "usn": "BAT001",
+            "name": "Battery - 1",
             "type": "BATTERY",
             "abnormalAmount": 0,
             "resettable": false,
             "version": {
-                "currentVersion": "V1.02-V0.00.000",
+                "currentVersion": "V1.20",
+                "status": "NO_UPDATE"
+            }
+        },
+        {
+            "usn": "BAT002",
+            "name": "Battery - 2",
+            "type": "BATTERY",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V1.20",
+                "status": "NO_UPDATE"
+            }
+        },
+        {
+            "usn": "BAT003",
+            "name": "Battery - 3",
+            "type": "BATTERY",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V1.20",
+                "status": "NO_UPDATE"
+            }
+        },
+        {
+            "usn": "BAT004",
+            "name": "Battery - 4",
+            "type": "BATTERY",
+            "abnormalAmount": 0,
+            "resettable": false,
+            "version": {
+                "currentVersion": "V1.20",
                 "status": "NO_UPDATE"
             }
         }

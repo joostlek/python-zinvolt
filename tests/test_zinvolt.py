@@ -118,6 +118,12 @@ async def test_set_custom_smart_mode(
             "system/123123/unit/battery/abc123",
             "battery_unit",
         ),
+        (
+            "get_units",
+            {"battery_id": "123123"},
+            "system/123123/unit",
+            "unit",
+        ),
     ],
     ids=[
         "get_batteries",
@@ -127,6 +133,7 @@ async def test_set_custom_smart_mode(
         "get_global_settings",
         "get_custom_modes",
         "get_battery_unit",
+        "get_units",
     ],
 )
 async def test_retrieve_data(

@@ -163,7 +163,6 @@ class BatteryUnit(DataClassORJSONMixin):
     points: list[Checkpoint]
     battery_model: str = field(metadata=field_options(alias="batteryModel"))
     power: int
-    temperature: int
 
 
 @dataclass

@@ -73,7 +73,6 @@
     ]),
     'power': -6,
     'serial_number': 'ZVS25011000009148',
-    'temperature': 0,
     'version': dict({
       'current_version': 'V1.02-V0.00.000',
       'latest_version': None,

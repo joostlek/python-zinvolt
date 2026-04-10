@@ -129,6 +129,7 @@
       'type': <UnitType.INVERTER: 'INVERTER'>,
       'version': dict({
         'current_version': 'V1.032',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),
@@ -140,6 +141,7 @@
       'type': <UnitType.EMS: 'EMS'>,
       'version': dict({
         'current_version': 'V1.01.45E',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),
@@ -151,6 +153,7 @@
       'type': <UnitType.BATTERY: 'BATTERY'>,
       'version': dict({
         'current_version': 'V1.20',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),
@@ -162,6 +165,7 @@
       'type': <UnitType.BATTERY: 'BATTERY'>,
       'version': dict({
         'current_version': 'V1.20',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),
@@ -173,6 +177,7 @@
       'type': <UnitType.BATTERY: 'BATTERY'>,
       'version': dict({
         'current_version': 'V1.20',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),
@@ -184,6 +189,7 @@
       'type': <UnitType.BATTERY: 'BATTERY'>,
       'version': dict({
         'current_version': 'V1.20',
+        'latest_version': None,
         'status': <UnitUpdateStatus.NO_UPDATE: 'NO_UPDATE'>,
       }),
     }),

@@ -125,6 +125,7 @@ class UnitUpdateStatus(StrEnum):
 
     NO_UPDATE = "NO_UPDATE"
     UPDATE_AVAILABLE = "UPDATE_AVAILABLE"
+    DISCOVER_UPDATED = "DISCOVER_UPDATED"
 
 
 @dataclass
@@ -133,6 +134,9 @@ class UnitVersion(DataClassORJSONMixin):
 
     current_version: str = field(metadata=field_options(alias="currentVersion"))
     status: UnitUpdateStatus
+    latest_version: str | None = field(
+        metadata=field_options(alias="latestVersion"), default=None
+    )
 
 
 @dataclass

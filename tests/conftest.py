@@ -19,7 +19,7 @@ def snapshot_assertion(snapshot: SnapshotAssertion) -> SnapshotAssertion:
 
 
 @pytest.fixture
-async def client() -> AsyncGenerator[ZinvoltClient, None]:
+async def client() -> AsyncGenerator[ZinvoltClient]:
     """Return a Zinvolt client."""
     async with (
         aiohttp.ClientSession() as session,
@@ -29,7 +29,7 @@ async def client() -> AsyncGenerator[ZinvoltClient, None]:
 
 
 @pytest.fixture(name="responses")
-def aioresponses_fixture() -> Generator[aioresponses, None, None]:
+def aioresponses_fixture() -> Generator[aioresponses]:
     """Return aioresponses fixture."""
     with aioresponses() as mocked_responses:
         yield mocked_responses

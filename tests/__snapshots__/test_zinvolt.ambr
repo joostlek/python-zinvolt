@@ -1,4 +1,31 @@
 # serializer version: 1
+# name: test_get_battery_status_offline
+  dict({
+    'current_power': dict({
+      'is_dormant': None,
+      'max_power': None,
+      'on_grid': None,
+      'online_status': <OnlineStatus.OFFLINE: 'OFFLINE'>,
+      'output_current': None,
+      'photovoltaic_power': None,
+      'power_socket_output': None,
+      'state_of_charge': None,
+    }),
+    'global_settings': dict({
+      'battery_lower_threshold': 10,
+      'battery_upper_threshold': 100,
+      'max_output': 800,
+      'max_output_limit': 800,
+      'max_output_unlocked': False,
+      'maximum_charge_power': 2000,
+      'standby_time': 60,
+    }),
+    'name': 'ZVG011025110053',
+    'online_status': <OnlineStatus.OFFLINE: 'OFFLINE'>,
+    'serial_number': 'ZVG011025110053',
+    'smart_mode': <SmartMode.CHARGED: 'CHARGED'>,
+  })
+# ---
 # name: test_login
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vZXZhLWJhY2tvZmZpY2Uub25tb29ubHkuYXBwL2FwaS9wdWJsaWMvdjIvbG9naW4iLCJpYXQiOjE3NjA3OTM0NjEsIm5iZiI6MTc2MDc5MzQ2MSwianRpIjoiYjY5U0J4bVVscU5WcmlKQyIsInN1YiI6ImEwMjI2YjhmLTk4ZmUtNDUyNC1iMzY5LTI3MmI0NjZiODc5NyIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjciLCJkZXZpY2VzIjpbeyJzZXJpYWxfbnVtYmVyIjoiQUxHMDAxMTI0MTAwMTA3Iiwic3VwcGxpZXIiOiJhbHBoYWVzcyIsImRldmljZWFibGVfdHlwZSI6IkFwcFxcTW9kZWxzXFxCYWxjb255QmF0dGVyeSJ9XSwibmFtZSI6IkludGVncmF0aW9uIE5hbWUiLCJhYmlsaXRpZXMiOlsiYXBpOnB1YmxpYyJdfQ.UumLlVUkGBHnO0ZVtpfENy-edf_d5LV4gOctNan2M5w'
 # ---
@@ -18,7 +45,7 @@
       'max_power': 800,
       'on_grid': True,
       'online_status': <OnlineStatus.ONLINE: 'ONLINE'>,
-      'output_current': 4,
+      'output_current': 4.0,
       'photovoltaic_power': 0,
       'power_socket_output': -19,
       'state_of_charge': 100.0,

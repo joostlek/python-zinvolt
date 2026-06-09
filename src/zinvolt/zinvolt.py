@@ -4,15 +4,17 @@ from __future__ import annotations
 
 import asyncio
 from dataclasses import dataclass
+from http import HTTPStatus
 import logging
 from typing import Any, Self
 
-from aiohttp import ClientSession
+from aiohttp import ClientError, ClientSession
 from aiohttp.hdrs import METH_GET, METH_POST, METH_PUT
 from mashumaro.codecs.orjson import ORJSONDecoder
 import orjson
 from yarl import URL
 
+from zinvolt.exceptions import ZinvoltAuthenticationError, ZinvoltError
 from zinvolt.models import (
     Battery,
     BatteryListResponse,
@@ -67,15 +69,41 @@ class ZinvoltClient:
         if headers is None:
             headers = {}
 
-        async with asyncio.timeout(self.request_timeout):
-            response = await self.session.request(
-                method,
-                url,
-                headers=base_headers | headers,
-                json=data,
-            )
+        try:
+            async with asyncio.timeout(self.request_timeout):
+                response = await self.session.request(
+                    method,
+                    url,
+                    headers=base_headers | headers,
+                    json=data,
+                )
+                body = await response.text()
+        except TimeoutError as err:
+            msg = f"Timeout occurred while connecting to {url}"
+            raise ZinvoltError(msg) from err
+        except ClientError as err:
+            msg = f"Error occurred while communicating with {url}: {err}"
+            raise ZinvoltError(msg) from err
 
-        return await response.text()
+        if response.status in (HTTPStatus.UNAUTHORIZED, HTTPStatus.FORBIDDEN):
+            msg = f"Authentication failed for {url} (status {response.status})"
+            raise ZinvoltAuthenticationError(msg)
+        if response.status >= HTTPStatus.BAD_REQUEST:
+            # The API returns JSON error envelopes like
+            # {"message": "...", "type": "...", "code": 400}; surface the
+            # message when it's there so callers don't have to parse it.
+            detail = body
+            try:
+                payload = orjson.loads(body)  # pylint: disable=no-member
+            except orjson.JSONDecodeError:  # pylint: disable=no-member
+                pass
+            else:
+                if isinstance(payload, dict) and "message" in payload:
+                    detail = str(payload["message"])
+            msg = f"Unexpected status {response.status} from {url}: {detail}"
+            raise ZinvoltError(msg)
+
+        return body
 
     async def _get(self, uri: str) -> str:
         """Handle a GET request to the Zinvolt API."""

@@ -1,0 +1,5 @@
+{
+    "message": "The device does not exist",
+    "type": "DEVICE_NOT_EXIST",
+    "code": 400
+}

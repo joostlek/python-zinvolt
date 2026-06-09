@@ -8,6 +8,7 @@ from aiohttp.hdrs import METH_GET, METH_POST, METH_PUT
 from aioresponses import aioresponses
 import pytest
 
+from zinvolt.exceptions import ZinvoltAuthenticationError, ZinvoltError
 from zinvolt.models import SmartMode
 
 from . import load_fixture
@@ -210,3 +211,60 @@ async def test_setting_global_settings(
         headers=HEADERS,
         json=data,
     )
+
+
+async def test_get_battery_status_offline(
+    responses: aioresponses,
+    client: ZinvoltClient,
+    snapshot: SnapshotAssertion,
+) -> None:
+    """Offline batteries return currentPower with only onlineStatus."""
+    responses.get(
+        f"{URL}system/123123/basic/current-state",
+        status=200,
+        body=load_fixture("current_state_offline.json"),
+    )
+    assert await client.get_battery_status(battery_id="123123") == snapshot
+
+
+@pytest.mark.parametrize(
+    ("status", "body", "expected"),
+    [
+        (400, load_fixture("device_not_exist.json"), "The device does not exist"),
+        (500, "internal server error", "internal server error"),
+        (404, "", ""),
+    ],
+    ids=["json_envelope", "plain_text", "empty_body"],
+)
+async def test_request_error_status(
+    responses: aioresponses,
+    client: ZinvoltClient,
+    status: int,
+    body: str,
+    expected: str,
+) -> None:
+    """Non-2xx responses raise ZinvoltError with the API message when present."""
+    responses.get(
+        f"{URL}system/123123/unit/battery/abc",
+        status=status,
+        body=body,
+    )
+    with pytest.raises(ZinvoltError) as err:
+        await client.get_battery_unit(battery_id="123123", battery_serial_number="abc")
+    assert expected in str(err.value)
+
+
+@pytest.mark.parametrize("status", [401, 403])
+async def test_request_authentication_error(
+    responses: aioresponses,
+    client: ZinvoltClient,
+    status: int,
+) -> None:
+    """401/403 responses raise ZinvoltAuthenticationError."""
+    responses.get(
+        f"{URL}system/batteries",
+        status=status,
+        body='{"message":"Unauthenticated."}',
+    )
+    with pytest.raises(ZinvoltAuthenticationError):
+        await client.get_batteries()

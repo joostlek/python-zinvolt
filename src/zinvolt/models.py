@@ -57,16 +57,30 @@ class SmartMode(StrEnum):
 
 @dataclass
 class CurrentPower(DataClassORJSONMixin):
-    """Current power model."""
+    """Current power model.
 
-    state_of_charge: float = field(metadata=field_options(alias="soc"))
-    output_current: int = field(metadata=field_options(alias="coc"))
-    max_power: int = field(metadata=field_options(alias="smp"))
-    on_grid: bool = field(metadata=field_options(alias="onGrid"))
-    photovoltaic_power: int = field(metadata=field_options(alias="ppv"))
-    power_socket_output: int = field(metadata=field_options(alias="pso"))
-    is_dormant: bool = field(metadata=field_options(alias="isDormancy"))
+    All telemetry fields are optional because the API omits them when the
+    battery is offline (then only ``onlineStatus`` is returned).
+    """
+
     online_status: OnlineStatus = field(metadata=field_options(alias="onlineStatus"))
+    state_of_charge: float | None = field(
+        metadata=field_options(alias="soc"), default=None
+    )
+    output_current: float | None = field(
+        metadata=field_options(alias="coc"), default=None
+    )
+    max_power: int | None = field(metadata=field_options(alias="smp"), default=None)
+    on_grid: bool | None = field(metadata=field_options(alias="onGrid"), default=None)
+    photovoltaic_power: int | None = field(
+        metadata=field_options(alias="ppv"), default=None
+    )
+    power_socket_output: int | None = field(
+        metadata=field_options(alias="pso"), default=None
+    )
+    is_dormant: bool | None = field(
+        metadata=field_options(alias="isDormancy"), default=None
+    )
 
 
 @dataclass

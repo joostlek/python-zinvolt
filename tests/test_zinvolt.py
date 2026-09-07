@@ -177,12 +177,17 @@ async def test_retrieve_data(
         (
             "set_upper_threshold",
             {"upper_threshold": 500},
-            {"max_charge_power": 500},
+            {"bat_high_cap": 500},
         ),
         (
             "set_standby_time",
             {"standby_time": 500},
             {"standby_time": 500},
+        ),
+        (
+            "set_max_charge_power",
+            {"max_charge_power": 500},
+            {"max_charge_power": 500},
         ),
     ],
     ids=[
@@ -190,6 +195,7 @@ async def test_retrieve_data(
         "set_lower_threshold",
         "set_upper_threshold",
         "set_standby_time",
+        "set_max_charge_power",
     ],
 )
 async def test_setting_global_settings(

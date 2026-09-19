@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any
 
 from aiohttp.hdrs import METH_GET, METH_POST, METH_PUT
-from aioresponses import aioresponses
+from aiointercept import aiointercept
 import pytest
 
 from zinvolt.exceptions import ZinvoltAuthenticationError, ZinvoltError
@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 
 
 async def test_login(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     snapshot: SnapshotAssertion,
 ) -> None:
@@ -42,7 +42,7 @@ async def test_login(
     )
 
 
-async def test_set_smart_mode(responses: aioresponses, client: ZinvoltClient) -> None:
+async def test_set_smart_mode(responses: aiointercept, client: ZinvoltClient) -> None:
     """Test setting smart mode."""
     responses.put(
         f"{URL}system/123123/operation/switch-smart-mode",
@@ -58,7 +58,7 @@ async def test_set_smart_mode(responses: aioresponses, client: ZinvoltClient) ->
 
 
 async def test_set_custom_smart_mode(
-    responses: aioresponses, client: ZinvoltClient
+    responses: aiointercept, client: ZinvoltClient
 ) -> None:
     """Test setting smart mode."""
     responses.put(
@@ -138,7 +138,7 @@ async def test_set_custom_smart_mode(
     ],
 )
 async def test_retrieve_data(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     snapshot: SnapshotAssertion,
     method: str,
@@ -193,7 +193,7 @@ async def test_retrieve_data(
     ],
 )
 async def test_setting_global_settings(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     method: str,
     kwargs: dict[str, Any],
@@ -214,7 +214,7 @@ async def test_setting_global_settings(
 
 
 async def test_get_battery_status_offline(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     snapshot: SnapshotAssertion,
 ) -> None:
@@ -237,7 +237,7 @@ async def test_get_battery_status_offline(
     ids=["json_envelope", "plain_text", "empty_body"],
 )
 async def test_request_error_status(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     status: int,
     body: str,
@@ -256,7 +256,7 @@ async def test_request_error_status(
 
 @pytest.mark.parametrize("status", [401, 403])
 async def test_request_authentication_error(
-    responses: aioresponses,
+    responses: aiointercept,
     client: ZinvoltClient,
     status: int,
 ) -> None:

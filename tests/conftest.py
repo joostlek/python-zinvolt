@@ -1,9 +1,9 @@
 """Asynchronous Python client for Zinvolt."""
 
-from collections.abc import AsyncGenerator, Generator
+from collections.abc import AsyncGenerator
 
 import aiohttp
-from aioresponses import aioresponses
+from aiointercept import aiointercept
 import pytest
 
 from syrupy import SnapshotAssertion
@@ -29,7 +29,7 @@ async def client() -> AsyncGenerator[ZinvoltClient]:
 
 
 @pytest.fixture(name="responses")
-def aioresponses_fixture() -> Generator[aioresponses]:
-    """Return aioresponses fixture."""
-    with aioresponses() as mocked_responses:
+async def aiointercept_fixture() -> AsyncGenerator[aiointercept]:
+    """Return aiointercept fixture."""
+    async with aiointercept(mock_external_urls=True) as mocked_responses:
         yield mocked_responses

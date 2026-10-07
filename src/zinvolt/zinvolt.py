@@ -43,7 +43,7 @@ class ZinvoltClient:
 
     token: str | None = None
     session: ClientSession | None = None
-    request_timeout: int = 10
+    request_timeout: int = 20
     _close_session: bool = False
 
     async def _request(

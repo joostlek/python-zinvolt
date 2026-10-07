@@ -204,7 +204,7 @@ class ZinvoltClient:
         await self._post(
             f"system/{battery_id}/configuration/global-settings",
             data={
-                "max_charge_power": upper_threshold,
+                "bat_high_cap": upper_threshold,
             },
         )
 
@@ -214,6 +214,17 @@ class ZinvoltClient:
             f"system/{battery_id}/configuration/global-settings",
             data={
                 "standby_time": standby_time,
+            },
+        )
+
+    async def set_max_charge_power(
+        self, battery_id: str, max_charge_power: int
+    ) -> None:
+        """Set the maximum charge power for the given battery ID."""
+        await self._post(
+            f"system/{battery_id}/configuration/global-settings",
+            data={
+                "max_charge_power": max_charge_power,
             },
         )
 

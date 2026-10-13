@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 from dataclasses import dataclass
 from http import HTTPStatus
 import logging
@@ -122,6 +123,24 @@ class ZinvoltClient:
         result = await self._post("login", {"email": email, "password": password})
         self.token = orjson.loads(result)["token"]  # pylint: disable=no-member
         return self.token
+
+    def get_user_id(self) -> str:
+        """Return the user ID from the 'sub' claim of the token.
+
+        The signature is not verified, the token is only used to identify the user.
+        """
+        if not self.token:
+            msg = "No token available, login first"
+            raise ZinvoltError(msg)
+        try:
+            payload = self.token.split(".")[1]
+            claims = orjson.loads(  # pylint: disable=no-member
+                base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4))
+            )
+            return str(claims["sub"])
+        except (IndexError, KeyError, TypeError, ValueError) as err:
+            msg = "Unable to extract user ID from token"
+            raise ZinvoltError(msg) from err
 
     async def get_batteries(self) -> list[Battery]:
         """Retrieve the list of batteries from the Zinvolt API."""

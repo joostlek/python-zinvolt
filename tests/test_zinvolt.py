@@ -42,6 +42,37 @@ async def test_login(
     )
 
 
+async def test_get_user_id(responses: aiointercept, client: ZinvoltClient) -> None:
+    """Test extracting the user ID from the token."""
+    responses.post(
+        f"{URL}login",
+        status=200,
+        body=load_fixture("login.json"),
+    )
+    await client.login(email="test@test.com", password="abc")
+    assert client.get_user_id() == "a0226b8f-98fe-4524-b369-272b466b8797"
+
+
+@pytest.mark.parametrize(
+    "token",
+    [
+        None,
+        "",
+        "invalid",
+        "header.!!!.signature",
+        "header.eyJmb28iOiJiYXIifQ.signature",
+        "header.WzFd.signature",
+    ],
+)
+async def test_get_user_id_invalid_token(
+    client: ZinvoltClient, token: str | None
+) -> None:
+    """Test extracting the user ID from an invalid token."""
+    client.token = token
+    with pytest.raises(ZinvoltError):
+        client.get_user_id()
+
+
 async def test_set_smart_mode(responses: aiointercept, client: ZinvoltClient) -> None:
     """Test setting smart mode."""
     responses.put(

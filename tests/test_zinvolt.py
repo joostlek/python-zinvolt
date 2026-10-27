@@ -9,7 +9,7 @@ from aiointercept import aiointercept
 import pytest
 
 from zinvolt.exceptions import ZinvoltAuthenticationError, ZinvoltError
-from zinvolt.models import SmartMode
+from zinvolt.models import SmartMode, UnitUpdateStatus, UnitVersion
 
 from . import load_fixture
 from .const import HEADERS, URL
@@ -305,3 +305,15 @@ async def test_request_authentication_error(
     )
     with pytest.raises(ZinvoltAuthenticationError):
         await client.get_batteries()
+
+
+def test_unit_version_updating() -> None:
+    """Test a unit that is installing an update parses."""
+    version = UnitVersion.from_dict(
+        {
+            "currentVersion": "V1.01.06",
+            "latestVersion": "V1.01.22ABU",
+            "status": "UPDATING",
+        }
+    )
+    assert version.status is UnitUpdateStatus.UPDATING
